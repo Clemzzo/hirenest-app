@@ -1,0 +1,81 @@
+Product Requirement Document (PRD)
+Project Title: Hirenestly (Marketplace Web Application for Service Providers & Customers) 
+Version: v1.0
+1. Project Overview
+The proposed product is a Marketplace Web Application that connects Customers with Service Providers across Nigeria. Customers will be able to hire vetted individuals with diverse skill sets (e.g., Developers, Designers, Photographers, Caterers, etc.), while Service Providers can showcase their expertise, define service coverage areas, and interact with customers.
+The platform will offer onboarding flows, dashboards, in-app chat, reviews, and an Admin backend for monitoring activities and dispute resolution.
+2. Goals & Objectives
+•	Provide an easy-to-use marketplace where customers can find and hire skilled professionals.
+•	Enable Service Providers to register, verify their identity, and advertise their skills.
+•	Offer real-time communication between customers and providers via in-app chat.
+•	Implement trust mechanisms (reviews, ratings, admin oversight, ID verification).
+•	Launch scalable MVP that can be extended with payment gateway, bookings, and additional features later.
+3. Target Users
+Primary Users:
+1.	Customers
+o	Individuals or businesses seeking professional services.
+o	Ability to browse, filter, hire, and review service providers.
+2.	Service Providers
+o	Skilled professionals registering under specific categories.
+o	Ability to create service profiles, define coverage area, and interact with customers.
+Secondary Users:
+3.	Administrators (Admin Dashboard)
+o	Oversee platform operations.
+o	Handle disputes, verify identities, manage reports, and ensure compliance.
+
+4.1 User Authentication & Onboarding
+•	Email/Phone-based registration & login.
+•	Role selection at signup: Customer OR Service Provider.
+•	Service Provider onboarding flow:
+o	Select Category (e.g., Developer, Designer, Caterer, etc.).
+o	Upload Means of Identification.
+o	Provide Short Bio / Description.
+o	Select Service Coverage Area (within Nigeria).
+
+4.2 Dashboards
+•	Customer Dashboard:
+o	Browse/search providers by category & location.
+o	View provider profiles.
+o	Initiate chat/hire provider.
+o	Track ongoing & past engagements.
+
+•	Service Provider Dashboard:
+o	Manage profile (skills, coverage area, description, ID).
+o	Respond to customer inquiries.
+o	Track jobs/requests history.
+o	View ratings and reviews.
+•	Admin Dashboard:
+o	Monitor all registered users.
+o	Approve/flag service providers.
+o	Handle disputes.
+o	View analytics & reports.
+
+4.3 Service Provider Profiles
+•	Category & subcategory tags.
+•	Bio/Description of services.
+•	Coverage area (state/city in Nigeria).
+•	Verification status (Admin approval after ID check).
+
+4.4 Search & Hire Flow
+•	Customers can filter providers by Category + Coverage Area.
+•	Ability to view profiles & initiate hire request.
+•	(Future extension: Booking & payments).
+
+4.5 In-App Chat System
+•	One-to-one messaging between customer and provider.
+•	Chat initiated from profile/hire request.
+•	Basic features: text, file/image sharing (for service clarification).
+
+4.6 Ratings & Reviews
+•	Customers leave feedback after job completion.
+•	Rating (1–5 stars) + written review.
+•	Provider’s profile displays aggregated ratings.
+
+Tech Stack & Tools
+•	Frontend: Web App (Responsive) 
+•	Tech baseline (recommended): Next.js + TypeScript + Tailwind + shadcn/ui.
+•	Backend: Supabase 
+•	Storage: For ID uploads & provider documents.
+•	Real-time Messaging: Supabase Realtime
+
+
