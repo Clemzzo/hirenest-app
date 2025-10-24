@@ -40,6 +40,9 @@ export default function LoginPage() {
   
   // Check for OAuth errors in URL parameters
   useEffect(() => {
+    // Only run on client side
+    if (typeof window === 'undefined') return;
+    
     const urlParams = new URLSearchParams(window.location.search);
     const error = urlParams.get('error');
     const message = urlParams.get('message');
