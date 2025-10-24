@@ -134,12 +134,41 @@ export default function VerifyClient() {
   };
 
   const continueToDashboard = async () => {
-    const { data } = await supabase.auth.getSession();
-    const user = data.session?.user;
-    if (user?.user_metadata?.role === "provider") {
-      router.replace("/provider");
-    } else {
-      router.replace("/dashboard");
+    try {
+      const { data, error } = await supabase.auth.getSession();
+      
+      if (error) {
+        console.error('Session error:', error);
+        setMessage("Session error. Please try signing in again.");
+        router.replace("/login");
+        return;
+      }
+      
+      const user = data.session?.user;
+      
+      if (!user) {
+        setMessage("No active session found. Redirecting to sign in...");
+        router.replace("/login");
+        return;
+      }
+      
+      // Check if email is confirmed
+      if (!user.email_confirmed_at) {
+        setMessage("Please verify your email first before proceeding.");
+        return;
+      }
+      
+      // Redirect based on user role
+      const role = user.user_metadata?.role;
+      if (role === "provider" || role === "service-provider") {
+        router.replace("/provider");
+      } else {
+        router.replace("/dashboard");
+      }
+    } catch (error) {
+      console.error('Error in continueToDashboard:', error);
+      setMessage("An error occurred. Please try signing in again.");
+      router.replace("/login");
     }
   };
 
@@ -197,7 +226,7 @@ export default function VerifyClient() {
                       <ul className="space-y-1 text-blue-700">
                          <li>• Check your email inbox (and spam folder)</li>
                          <li>• Click the verification link in the email</li>
-                         <li>• Click Back to sign in below to sign into your dashboard</li>
+                         <li>• Click "Proceed to Dashboard" below to go to your dashboard</li>
                        </ul>
                     </div>
                   </div>
@@ -272,13 +301,14 @@ export default function VerifyClient() {
                 </Button>
               )}
 
-              <Link 
-                href="/login" 
-                className="flex items-center justify-center gap-2 w-full py-3 text-[#8C12AA] hover:text-purple-700 font-medium transition-colors duration-200 group"
+              <Button 
+                onClick={continueToDashboard}
+                variant="ghost"
+                className="flex items-center justify-center gap-2 w-full py-3 text-[#8C12AA] hover:text-purple-700 font-medium transition-colors duration-200 group hover:bg-purple-50"
               >
                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
-                Back to Sign in
-              </Link>
+                Proceed to Dashboard
+              </Button>
             </div>
           </CardFooter>
         </Card>
