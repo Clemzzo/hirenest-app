@@ -75,36 +75,26 @@ export default function VerifyClient() {
       const isConfirmed = Boolean(user?.email_confirmed_at);
       if (isConfirmed && user) {
         setConfirmed(true);
-        setMessage("Email verified! Redirecting to your dashboard...");
+        setMessage("Email verified! You can now proceed to your dashboard.");
         await upsertProfile(user);
-        const dest = (user?.user_metadata?.role === "provider" || user?.user_metadata?.role === "service-provider")
-          ? "/provider"
-          : "/dashboard";
-        // Redirect after ensuring profile is upserted
-        router.replace(dest);
       }
     })();
 
     // Listen for auth state changes after clicking email link
-    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: sub } = supabase.auth.onAuthStateChange(async (_event, session) => {
       const user = session?.user;
       const isConfirmed = Boolean(user?.email_confirmed_at);
       if (isConfirmed && user) {
         setConfirmed(true);
-        setMessage("Email verified! Redirecting to your dashboard...");
-        upsertProfile(user).finally(() => {
-          const dest = (user?.user_metadata?.role === "provider" || user?.user_metadata?.role === "service-provider")
-            ? "/provider"
-            : "/dashboard";
-          router.replace(dest);
-        });
+        setMessage("Email verified! You can now proceed to your dashboard.");
+        await upsertProfile(user);
       }
     });
 
     return () => {
       sub.subscription.unsubscribe();
     };
-  }, [router, upsertProfile]);
+  }, [upsertProfile]);
 
   const resendVerification = async () => {
     if (!email) {
@@ -140,7 +130,6 @@ export default function VerifyClient() {
       if (error) {
         console.error('Session error:', error);
         setMessage("Session error. Please try signing in again.");
-        router.replace("/login");
         return;
       }
       
@@ -158,6 +147,9 @@ export default function VerifyClient() {
         return;
       }
       
+      // Ensure profile is upserted before redirecting
+      await upsertProfile(user);
+      
       // Redirect based on user role
       const role = user.user_metadata?.role;
       if (role === "provider" || role === "service-provider") {
@@ -168,7 +160,6 @@ export default function VerifyClient() {
     } catch (error) {
       console.error('Error in continueToDashboard:', error);
       setMessage("An error occurred. Please try signing in again.");
-      router.replace("/login");
     }
   };
 
