@@ -50,14 +50,68 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   if (loading) {
     return (
-      <div className="min-h-screen grid place-items-center text-gray-600">Loading dashboard…</div>
+      <div className="min-h-screen bg-neutral-50 text-gray-900">
+        {/* Skeleton Header */}
+        <div className="fixed top-0 inset-x-0 h-16 bg-white/80 backdrop-blur border-b border-gray-100 animate-pulse z-40" />
+
+        {/* Body */}
+        <div className="pt-16 flex">
+          {/* Skeleton Sidebar */}
+          <aside className="w-64 shrink-0 hidden md:block border-r border-gray-200 bg-white/80 backdrop-blur min-h-[calc(100vh-4rem)] sticky top-16">
+            <div className="p-4 space-y-2">
+              <div className="h-9 rounded-lg bg-gray-200 animate-pulse" />
+              <div className="h-9 rounded-lg bg-gray-200 animate-pulse" />
+              <div className="h-9 rounded-lg bg-gray-200 animate-pulse" />
+              <div className="h-9 rounded-lg bg-gray-200 animate-pulse" />
+              <div className="h-9 rounded-lg bg-gray-200 animate-pulse" />
+            </div>
+          </aside>
+
+          {/* Skeleton Main Content */}
+          <main className="flex-1 min-w-0">
+            <div className="max-w-7xl mx-auto p-4 md:p-6 lg:p-8">
+              {/* Welcome + description skeleton */}
+              <div className="space-y-2 mb-6">
+                <div className="h-7 w-64 bg-gray-200 rounded-md animate-pulse" />
+                <div className="h-4 w-80 bg-gray-200 rounded-md animate-pulse" />
+              </div>
+
+              {/* Metrics cards skeleton */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
+                  <div className="h-5 w-32 bg-gray-200 rounded-md mb-4 animate-pulse" />
+                  <div className="h-9 w-20 bg-gray-200 rounded-md animate-pulse" />
+                </div>
+                <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
+                  <div className="h-5 w-32 bg-gray-200 rounded-md mb-4 animate-pulse" />
+                  <div className="h-9 w-20 bg-gray-200 rounded-md animate-pulse" />
+                </div>
+                <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
+                  <div className="h-5 w-24 bg-gray-200 rounded-md mb-4 animate-pulse" />
+                  <div className="h-10 w-full bg-gray-200 rounded-full animate-pulse" />
+                </div>
+              </div>
+
+              {/* Large panel skeleton */}
+              <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+                <div className="h-5 w-40 bg-gray-200 rounded-md mb-4 animate-pulse" />
+                <div className="space-y-3">
+                  <div className="h-4 w-72 bg-gray-200 rounded-md animate-pulse" />
+                  <div className="h-4 w-64 bg-gray-200 rounded-md animate-pulse" />
+                  <div className="h-4 w-56 bg-gray-200 rounded-md animate-pulse" />
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
+    <div className="min-h-screen bg-neutral-50 text-gray-900">
       {/* Header */}
-      <header className="fixed top-0 inset-x-0 h-16 bg-white border-b border-gray-200 z-40">
+      <header className="fixed top-0 inset-x-0 h-16 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-gray-100 shadow-sm z-40">
         <div className="max-w-7xl mx-auto h-full px-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-center gap-2">
@@ -75,7 +129,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </div>
           <div className="flex items-center gap-3">
             <span className="hidden sm:inline text-sm text-gray-600">Hi, {fullName}</span>
-            <Button onClick={signOut} className="bg-[#8C12AA] hover:bg-[#8C12AA]">Logout</Button>
+            <Button onClick={signOut} className="bg-[#8C12AA] hover:bg-[#8C12AA] rounded-full px-4">Logout</Button>
           </div>
         </div>
       </header>
@@ -121,7 +175,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Body */}
       <div className="pt-16 flex">
         {/* Sidebar */}
-        <aside className="w-64 shrink-0 hidden md:block border-r border-gray-200 bg-white min-h-[calc(100vh-4rem)] sticky top-16">
+        <aside className="w-64 shrink-0 hidden md:block border-r border-gray-200 bg-white/90 backdrop-blur min-h-[calc(100vh-4rem)] sticky top-16">
           <nav className="p-4 space-y-1">
             {navItems.map((item) => {
               const active = pathname === item.href;
@@ -130,10 +184,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm transition ${
+                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-all duration-200 ${
                     active
-                      ? "bg-[#8C12AA]/10 text-[#8C12AA] font-medium"
-                      : "text-gray-700 hover:bg-gray-100"
+                      ? "bg-[#8C12AA]/10 text-[#8C12AA] font-semibold shadow-sm"
+                      : "text-gray-700 hover:bg-gray-100 hover:shadow-sm"
                   }`}
                 >
                   <Icon className="w-4 h-4" />
