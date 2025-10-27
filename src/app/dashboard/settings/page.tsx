@@ -188,7 +188,7 @@ export default function SettingsPage() {
                     try {
                       await uploadAvatar(f);
                     } catch (err) {
-                      console.error(err);
+                      // Silently handle avatar upload error - user will see UI feedback
                     } finally {
                       setAvatarUploading(false);
                       if (avatarInputRef.current) avatarInputRef.current.value = "";

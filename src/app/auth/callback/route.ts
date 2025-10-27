@@ -40,8 +40,6 @@ export async function GET(request: NextRequest) {
       if (data?.session) {
         const user = data.session.user
         let role = (user?.user_metadata?.role as string | undefined) || null
-        // eslint-disable-next-line no-console
-        console.warn('Session exchange succeeded for user:', user.id, 'role from metadata:', role)
 
         // If no role in metadata, check the profiles table
         if (!role) {
@@ -54,17 +52,14 @@ export async function GET(request: NextRequest) {
             
             if (!profileError && profileData?.role) {
               role = profileData.role
-              // eslint-disable-next-line no-console
-              console.warn('Found role in profiles table:', role)
             }
           } catch (e) {
-            console.warn('Error fetching role from profiles table:', e)
+            // Silently handle error - role will remain null and default to customer dashboard
           }
         }
 
         // Redirect to appropriate dashboard based on role
         const redirectPath = role === 'provider' || role === 'service-provider' ? '/provider' : '/dashboard'
-        console.warn('Redirecting to:', redirectPath, 'based on role:', role)
         const response = NextResponse.redirect(`${origin}${redirectPath}`)
         return response
       }

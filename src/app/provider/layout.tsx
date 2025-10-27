@@ -115,8 +115,57 @@ export default function ProviderDashboardLayout({ children }: { children: React.
 
   if (loading) {
     return (
-      <div className="min-h-screen grid place-items-center text-gray-600">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#8C12AA]"></div>
+      <div className="min-h-screen bg-gray-50 text-gray-900">
+        {/* Skeleton Header */}
+        <div className="fixed top-0 inset-x-0 h-16 bg-white/80 backdrop-blur border-b border-gray-200 animate-pulse z-40" />
+
+        {/* Body */}
+        <div className="pt-16 flex">
+          {/* Skeleton Sidebar */}
+          <aside className="w-64 shrink-0 hidden md:block border-r border-gray-200 bg-white/80 backdrop-blur min-h-[calc(100vh-4rem)] sticky top-16">
+            <div className="p-4 space-y-2">
+              <div className="h-9 rounded-lg bg-gray-200 animate-pulse" />
+              <div className="h-9 rounded-lg bg-gray-200 animate-pulse" />
+              <div className="h-9 rounded-lg bg-gray-200 animate-pulse" />
+              <div className="h-9 rounded-lg bg-gray-200 animate-pulse" />
+              <div className="h-9 rounded-lg bg-gray-200 animate-pulse" />
+              <div className="h-9 rounded-lg bg-gray-200 animate-pulse" />
+            </div>
+          </aside>
+
+          {/* Skeleton Main Content */}
+          <main className="flex-1 min-w-0">
+            <div className="max-w-7xl mx-auto p-4 md:p-6 lg:p-8">
+              {/* Welcome + description skeleton */}
+              <div className="space-y-2 mb-6">
+                <div className="h-7 w-64 bg-gray-200 rounded-md animate-pulse" />
+                <div className="h-4 w-80 bg-gray-200 rounded-md animate-pulse" />
+              </div>
+
+              {/* Metrics cards skeleton */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
+                  <div className="h-5 w-32 bg-gray-200 rounded-md mb-4 animate-pulse" />
+                  <div className="h-9 w-20 bg-gray-200 rounded-md animate-pulse" />
+                </div>
+                <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
+                  <div className="h-5 w-32 bg-gray-200 rounded-md mb-4 animate-pulse" />
+                  <div className="h-9 w-20 bg-gray-200 rounded-md animate-pulse" />
+                </div>
+              </div>
+
+              {/* Large panel skeleton */}
+              <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+                <div className="h-5 w-40 bg-gray-200 rounded-md mb-4 animate-pulse" />
+                <div className="space-y-3">
+                  <div className="h-4 w-72 bg-gray-200 rounded-md animate-pulse" />
+                  <div className="h-4 w-64 bg-gray-200 rounded-md animate-pulse" />
+                  <div className="h-4 w-56 bg-gray-200 rounded-md animate-pulse" />
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
       </div>
     );
   }

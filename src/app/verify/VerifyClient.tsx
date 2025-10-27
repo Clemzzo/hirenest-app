@@ -63,7 +63,7 @@ export default function VerifyClient() {
         }
       }
     } catch (error) {
-      console.error('Error upserting profile:', error);
+      // Silently handle profile upsert error - user can still proceed
     }
   }, [profileUpserted]);
 
@@ -116,7 +116,6 @@ export default function VerifyClient() {
       }
       setMessage("Verification email resent. Please check your inbox.");
     } catch (error) {
-      console.error('Error resending verification:', error);
       setMessage("Something went wrong while resending. Please try again.");
     } finally {
       setResending(false);
@@ -128,7 +127,6 @@ export default function VerifyClient() {
       const { data, error } = await supabase.auth.getSession();
       
       if (error) {
-        console.error('Session error:', error);
         setMessage("Session error. Please try signing in again.");
         return;
       }
@@ -158,7 +156,6 @@ export default function VerifyClient() {
         router.replace("/dashboard");
       }
     } catch (error) {
-      console.error('Error in continueToDashboard:', error);
       setMessage("An error occurred. Please try signing in again.");
     }
   };
