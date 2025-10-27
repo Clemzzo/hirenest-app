@@ -52,8 +52,8 @@ const categories = [
 const Categories = () => {
   return (
     <section id="categories" className="py-16 px-4 bg-white">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12 animate-fade-in">
+      <div className="container mx-auto max-w-6xl" suppressHydrationWarning>
+        <div className="text-center mb-12 animate-fade-in" suppressHydrationWarning>
           <h2 className="text-3xl md:text-4xl font-bold text-[#AD15B0] mb-4">
             Popular Categories
           </h2>
@@ -63,7 +63,7 @@ const Categories = () => {
           {/* removed top-positioned link */}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-slide-up">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-slide-up" suppressHydrationWarning>
           {categories.map((category) => (
             <Card
               key={category.title}
@@ -72,6 +72,7 @@ const Categories = () => {
               <CardHeader className="pb-2">
                 <div
                   className={`w-14 h-14 rounded-xl ${category.color} flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 transition-transform`}
+                  suppressHydrationWarning
                 >
                   <Image
                     src={category.img}
@@ -94,7 +95,7 @@ const Categories = () => {
           ))}
         </div>
 
-        <div className="mt-8 text-center">
+        <div className="mt-8 text-center" suppressHydrationWarning>
           <Link
             href="/categories"
             aria-label="View all categories"

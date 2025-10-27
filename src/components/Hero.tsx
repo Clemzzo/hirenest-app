@@ -48,10 +48,10 @@ const Hero = () => {
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-tr from-white via-[#FFFFFF] to-[#AD15B0]">
-      <div className="relative container mx-auto max-w-6xl px-4 pt-28 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div className="relative container mx-auto max-w-6xl px-4 pt-28 pb-20" suppressHydrationWarning>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center" suppressHydrationWarning>
           {/* Left: Text & CTAs */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1" suppressHydrationWarning>
             <h1 className="text-4xl md:text-6xl font-bold text-[#6E0FB1] leading-tight">
               <span className="block">Find trusted</span>
               <span className="block">
@@ -65,7 +65,7 @@ const Hero = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="mt-8 flex flex-col sm:flex-row gap-8">
+            <div className="mt-8 flex flex-col sm:flex-row gap-8" suppressHydrationWarning>
               <Link href="/signup" prefetch={false}>
                 <Button
                   size="lg"
@@ -87,9 +87,9 @@ const Hero = () => {
           </div>
 
           {/* Right: Hero Image */}
-          <div className="order-1 lg:order-2 justify-self-center">
-            <div className="relative w-[520px] max-w-full">
-              <div className="relative rounded-[32px] overflow-hidden">
+          <div className="order-1 lg:order-2 justify-self-center" suppressHydrationWarning>
+            <div className="relative w-[400px] max-w-full" suppressHydrationWarning>
+              <div className="relative rounded-[32px] overflow-hidden" suppressHydrationWarning>
                 <Image
                   src={heroImage}
                   alt="Professionals collage"

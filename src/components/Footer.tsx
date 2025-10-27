@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import myLogo from "../../assets/mylogo.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { 
@@ -20,10 +22,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">HN</span>
-              </div>
-              <span className="text-xl font-bold">HireNestly</span>
+              <Image src={myLogo} alt="HireNestly logo" className="h-8 w-auto" priority />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Connecting you with trusted service providers across Nigeria. Quality services, reliable professionals.
@@ -129,7 +128,7 @@ export default function Footer() {
                   placeholder="Your email"
                   className="bg-gray-800 border-gray-700 text-white placeholder-gray-500"
                 />
-                <Button size="icon" className="bg-primary hover:bg-primary/90">
+                <Button size="icon" className="bg-[#AD15B0] text-white hover:bg-[#AD15B0]/90">
                   <Send className="w-4 h-4" />
                 </Button>
               </div>
@@ -143,7 +142,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-sm text-gray-400">
-            © 2024 HireNestly. All rights reserved.
+            © 2025 HireNestly. All rights reserved.
           </div>
           <div className="flex space-x-6 text-sm">
             <a href="#" className="text-gray-400 hover:text-white transition-colors">

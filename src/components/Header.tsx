@@ -15,8 +15,8 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto px-4 py-4" suppressHydrationWarning>
+        <div className="flex items-center justify-between" suppressHydrationWarning>
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-[#8C12AA] rounded-lg flex items-center justify-center">
@@ -39,7 +39,7 @@ const Header = () => {
           </nav>
 
           {/* Desktop Auth Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-4" suppressHydrationWarning>
             <Button variant="ghost" className="text-gray-600 hover:text-[#8C12AA]" asChild>
               <Link href="/login" prefetch={false}>Login</Link>
             </Button>
@@ -53,7 +53,7 @@ const Header = () => {
             className="md:hidden p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            <div className="w-6 h-6 flex flex-col justify-center items-center">
+            <div className="w-6 h-6 flex flex-col justify-center items-center" suppressHydrationWarning>
               <span
                 className={`bg-gray-600 block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
                   isMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'

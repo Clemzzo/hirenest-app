@@ -3,10 +3,8 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 
 const poppins = Poppins({
-  variable: "--font-poppins",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  fallback: ["system-ui", "arial"],
   display: "swap",
 });
 
@@ -21,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable}`} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.className} font-sans antialiased`} suppressHydrationWarning>
         {children}
       </body>

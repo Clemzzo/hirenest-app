@@ -234,7 +234,7 @@ export default function LoginPage() {
             <CardFooter className="justify-center">
               <p className="text-sm text-gray-600">
                 Don&apos;t have an account?{" "}
-                <Link href="/signup" prefetch={false} className="text-primary hover:underline font-medium">
+                <Link href="/signup" prefetch={false} className="font-medium hover:underline" style={{ color: '#AD15B0' }}>
                   Sign Up
                 </Link>
               </p>
