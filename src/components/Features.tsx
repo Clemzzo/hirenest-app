@@ -64,7 +64,7 @@ const Features = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Why Choose HireNestly
+            Why Choose Hirenest
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             We provide a secure, reliable platform that connects you with the best professionals in Nigeria

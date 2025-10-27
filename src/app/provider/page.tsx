@@ -56,12 +56,12 @@ export default function ProviderHome() {
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
       <div>
-        <h1 className="text-2xl md:text-3xl font-bold">Welcome, {fullName}</h1>
+        <h1 className="text-2xl md:text-0.75rem font-semibold text-[#8C12AA]">Welcome, {fullName}</h1>
         <p className="text-gray-600 mt-1">Here’s a quick snapshot of your service activity.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Card className="transition-transform hover:translate-y-[-2px]">
+        <Card className="transition-transform hover:translate-y-[-2px] border" style={{ borderColor: "#AD15B0" }}>
           <CardHeader>
             <CardTitle className="text-[12px] text-[#8C12AA]">Active Jobs</CardTitle>
           </CardHeader>
@@ -69,9 +69,9 @@ export default function ProviderHome() {
             <div className="text-3xl font-semibold">{activeJobs}</div>
           </CardContent>
         </Card>
-        <Card className="transition-transform hover:translate-y-[-2px]">
+        <Card className="transition-transform hover:translate-y-[-2px] border" style={{ borderColor: "#AD15B0" }}>
           <CardHeader>
-            <CardTitle>Average Rating</CardTitle>
+            <CardTitle className="text-[12px] text-[#8C12AA]">Average Rating</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-semibold">{avgRating.toFixed(1)}</div>

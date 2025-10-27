@@ -214,7 +214,7 @@ export default function SignUpPage() {
         <div className="w-full max-w-md animate-fade-in">
           {/* Header */}
           <div className="text-center mb-8 pt-16 animate-slide-up">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Join HireNestly</h1>
+            <h1 className="text-3xl font-bold text-[#AD15B0] mb-2">Join Hirenest</h1>
             <p className="text-gray-600">Connect with trusted professionals in Nigeria</p>
           </div>
 
@@ -647,7 +647,7 @@ export default function SignUpPage() {
           <CardFooter className="justify-center">
             <p className="text-sm text-gray-600">
               Already have an account?{" "}
-              <Link href="/login" prefetch={false} className="text-primary hover:underline font-medium">
+              <Link href="/login" prefetch={false} className="hover:underline font-medium" style={{color: '#AD15B0'}}>
                 Login
               </Link>
             </p>

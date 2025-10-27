@@ -52,7 +52,7 @@ export default function Testimonials() {
             What Our Users Say
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Join thousands of satisfied customers who have found reliable service providers through HireNestly
+            Join thousands of satisfied customers who have found reliable service providers through Hirenest
           </p>
         </div>
 
@@ -113,7 +113,7 @@ export default function Testimonials() {
         <div className="text-center mt-16 animate-fade-in animate-delay-200">
           <div className="inline-flex items-center gap-8 text-gray-600">
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary">10,000+</div>
+              <div className="text-3xl font-bold text-primary">100+</div>
               <div className="text-sm">Happy Customers</div>
             </div>
             <div className="text-center">
